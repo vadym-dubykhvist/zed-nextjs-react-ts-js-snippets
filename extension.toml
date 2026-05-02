@@ -4,4 +4,4 @@ version = "0.0.1"
 schema_version = 1
 authors = ["Vadym Dubykhvist"]
 description = "Next.js, React, TypeScript, TSX, and JSX snippets."
-repository = "https://github.com/vadymdubykhvist/zed-nextjs-react-ts-js-snippets"
+repository = "https://github.com/vadym-dubykhvist/zed-nextjs-react-ts-js-snippets"
