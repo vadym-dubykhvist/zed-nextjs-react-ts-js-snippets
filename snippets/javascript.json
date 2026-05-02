@@ -1,0 +1,237 @@
+{
+  "Next.js Page Component": {
+    "prefix": "npage",
+    "body": [
+      "const ${1:ComponentName} = () => {",
+      "  return (",
+      "    <div>",
+      "      $0",
+      "    </div>",
+      "  );",
+      "};",
+      "",
+      "export default ${1:ComponentName};"
+    ],
+    "description": "Next.js page component"
+  },
+  "Next.js Layout Component": {
+    "prefix": "nlayout",
+    "body": [
+      "export default function Layout({ children }) {",
+      "  return (",
+      "    <div>",
+      "      {children}",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "Next.js Layout component"
+  },
+  "Next.js API Route": {
+    "prefix": "apiroute",
+    "body": [
+      "export default function handler(req, res) {",
+      "  if (req.method === 'GET') {",
+      "    res.status(200).json({ message: 'Hello' });",
+      "  } else {",
+      "    res.status(405).end();",
+      "  }",
+      "}"
+    ],
+    "description": "Next.js API route handler"
+  },
+  "Next.js Middleware": {
+    "prefix": "middleware",
+    "body": [
+      "import { NextResponse } from 'next/server';",
+      "",
+      "export function middleware(request) {",
+      "  return NextResponse.next();",
+      "}",
+      "",
+      "export const config = {",
+      "  matcher: ['$1'],",
+      "};"
+    ],
+    "description": "Next.js Middleware"
+  },
+  "Next.js Link": {
+    "prefix": "nlink",
+    "body": ["<Link href=\"$1\">$2</Link>"],
+    "description": "Next.js Link component"
+  },
+  "Next.js Image": {
+    "prefix": "nimg",
+    "body": [
+      "import Image from 'next/image';",
+      "",
+      "<Image src=\"$1\" alt=\"$2\" width={$3} height={$4} />"
+    ],
+    "description": "Next.js Image component"
+  },
+  "React Functional Component": {
+    "prefix": "rfc",
+    "body": [
+      "const ${1:ComponentName} = () => {",
+      "  return (",
+      "    <div>",
+      "      $0",
+      "    </div>",
+      "  );",
+      "};",
+      "",
+      "export default ${1:ComponentName};"
+    ],
+    "description": "React Functional Component"
+  },
+  "React Functional Component (function)": {
+    "prefix": "rff",
+    "body": [
+      "export default function ${1:ComponentName}() {",
+      "  return (",
+      "    <div>",
+      "      $0",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "React Functional Component (function declaration)"
+  },
+  "useState Hook": {
+    "prefix": "us",
+    "body": ["const [${1:state}, set${1:state}] = useState($2);"],
+    "description": "React useState Hook"
+  },
+  "useEffect (with deps)": {
+    "prefix": "ue",
+    "body": [
+      "useEffect(() => {",
+      "  $0",
+      "}, [${1:deps}]);"
+    ],
+    "description": "useEffect Hook"
+  },
+  "useEffect (mount only)": {
+    "prefix": "uem",
+    "body": [
+      "useEffect(() => {",
+      "  $0",
+      "}, []);"
+    ],
+    "description": "useEffect runs once at mount"
+  },
+  "useEffect (every render)": {
+    "prefix": "uer",
+    "body": [
+      "useEffect(() => {",
+      "  $0",
+      "});"
+    ],
+    "description": "useEffect runs on every render"
+  },
+  "useEffect Cleanup": {
+    "prefix": "cleanup",
+    "body": [
+      "return () => {",
+      "  $0",
+      "};"
+    ],
+    "description": "useEffect cleanup function"
+  },
+  "useRef": {
+    "prefix": "urf",
+    "body": ["const ${1:ref} = useRef(null);"],
+    "description": "React useRef Hook"
+  },
+  "useContext": {
+    "prefix": "uctx",
+    "body": ["const ${1:value} = useContext(${2:Context});"],
+    "description": "React useContext Hook"
+  },
+  "useMemo": {
+    "prefix": "ume",
+    "body": [
+      "const ${1:value} = useMemo(() => {",
+      "  $0",
+      "}, [${2:deps}]);"
+    ],
+    "description": "useMemo Hook"
+  },
+  "useCallback": {
+    "prefix": "ucb",
+    "body": [
+      "const ${1:fn} = useCallback(() => {",
+      "  $0",
+      "}, [${2:deps}]);"
+    ],
+    "description": "useCallback Hook"
+  },
+  "Custom Hook": {
+    "prefix": "hk",
+    "body": [
+      "import { useState } from 'react';",
+      "",
+      "function use${1:Custom}(initialValue) {",
+      "  const [state, setState] = useState(initialValue);",
+      "",
+      "  const update = (value) => {",
+      "    setState(value);",
+      "  };",
+      "",
+      "  return { state, update };",
+      "}",
+      "",
+      "export default use${1:Custom};"
+    ],
+    "description": "Custom hook boilerplate"
+  },
+  "React Context": {
+    "prefix": "rctx",
+    "body": [
+      "import { createContext, useState, useContext } from 'react';",
+      "",
+      "const ${1:Name}Context = createContext(null);",
+      "",
+      "export function ${1:Name}Provider({ children }) {",
+      "  const [${2:state}, set${2:state}] = useState($3);",
+      "  return (",
+      "    <${1:Name}Context.Provider value={{ ${2:state}, set${2:state} }}>",
+      "      {children}",
+      "    </${1:Name}Context.Provider>",
+      "  );",
+      "}",
+      "",
+      "export function use${1:Name}() {",
+      "  const ctx = useContext(${1:Name}Context);",
+      "  if (!ctx) throw new Error('use${1:Name} must be used within ${1:Name}Provider');",
+      "  return ctx;",
+      "}"
+    ],
+    "description": "React Context with Provider and custom hook"
+  },
+  "React Fragment": {
+    "prefix": "frag",
+    "body": ["<>", "  $0", "</>"],
+    "description": "React Fragment shorthand"
+  },
+  "Async fetch": {
+    "prefix": "apifetch",
+    "body": [
+      "const fetchData = async () => {",
+      "  try {",
+      "    const response = await fetch('$1');",
+      "    const data = await response.json();",
+      "    $0",
+      "  } catch (error) {",
+      "    console.error(error);",
+      "  }",
+      "};"
+    ],
+    "description": "Async/await fetch API call"
+  },
+  "Console Log": {
+    "prefix": "clg",
+    "body": ["console.log($1);"],
+    "description": "console.log"
+  }
+}

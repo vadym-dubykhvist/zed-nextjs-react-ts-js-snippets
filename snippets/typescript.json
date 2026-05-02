@@ -1,0 +1,112 @@
+{
+  "Type Alias": {
+    "prefix": "tst",
+    "body": ["type ${1:TypeName} = {", "  ${2:key}: ${3:type};", "};"],
+    "description": "Type alias"
+  },
+  "Interface": {
+    "prefix": "tsi",
+    "body": ["interface ${1:InterfaceName} {", "  ${2:key}: ${3:type};", "}"],
+    "description": "Interface"
+  },
+  "Enum": {
+    "prefix": "enum",
+    "body": ["enum ${1:Name} {", "  $0", "}"],
+    "description": "Enum"
+  },
+  "Function Declaration": {
+    "prefix": "tsfn",
+    "body": ["function ${1:name}(${2:args}: ${3:type}): ${4:void} {", "  $0", "}"],
+    "description": "Function declaration with types"
+  },
+  "Arrow Function": {
+    "prefix": "tsafn",
+    "body": ["const ${1:name} = (${2:args}: ${3:type}): ${4:void} => {", "  $0", "};"],
+    "description": "Arrow function with types"
+  },
+  "Typed Fetch Function": {
+    "prefix": "tsfetch",
+    "body": [
+      "export async function fetch${1:Data}(): Promise<${2:Type}> {",
+      "  const response = await fetch('${3:/api/endpoint}');",
+      "  if (!response.ok) throw new Error('Failed to fetch');",
+      "  return response.json();",
+      "}"
+    ],
+    "description": "Typed fetch function with error handling"
+  },
+  "Try/Catch": {
+    "prefix": "tstc",
+    "body": [
+      "try {",
+      "  $0",
+      "} catch (err: unknown) {",
+      "  if (err instanceof Error) {",
+      "    console.error(err.message);",
+      "  }",
+      "}"
+    ],
+    "description": "try/catch with typed error"
+  },
+  "Type Guard": {
+    "prefix": "tgf",
+    "body": [
+      "function is${1:Type}(value: unknown): value is ${1:Type} {",
+      "  return typeof value === '${2:string}';",
+      "}"
+    ],
+    "description": "Type guard function"
+  },
+  "Record Type": {
+    "prefix": "tsrcd",
+    "body": [
+      "const ${1:record}: Record<${2:string}, ${3:number}> = {",
+      "  ${4:key}: ${5:value},",
+      "};"
+    ],
+    "description": "Record utility type"
+  },
+  "Class with Constructor": {
+    "prefix": "tscls",
+    "body": [
+      "class ${1:ClassName} {",
+      "  constructor(${2:args}) {",
+      "    $0",
+      "  }",
+      "}"
+    ],
+    "description": "Class with constructor"
+  },
+  "Service Class": {
+    "prefix": "tsserv",
+    "body": [
+      "class ${1:Name}Service {",
+      "  constructor(private readonly ${2:dep}: ${3:Dependency}) {}",
+      "",
+      "  async execute(${4:input}: ${5:InputType}): Promise<${6:OutputType}> {",
+      "    try {",
+      "      $0",
+      "    } catch (err) {",
+      "      throw new Error('Service execution failed');",
+      "    }",
+      "  }",
+      "}"
+    ],
+    "description": "Service class boilerplate"
+  },
+  "Import Statement": {
+    "prefix": "tsimprt",
+    "body": ["import { ${1:thing} } from '${2:module}';"],
+    "description": "Named import"
+  },
+  "Export Statement": {
+    "prefix": "tsxprt",
+    "body": ["export { $0 };"],
+    "description": "Export members"
+  },
+  "Console Log": {
+    "prefix": "clg",
+    "body": ["console.log($1);"],
+    "description": "console.log"
+  }
+}

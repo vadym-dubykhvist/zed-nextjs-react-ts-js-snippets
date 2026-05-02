@@ -1,0 +1,308 @@
+{
+  "Next.js Page Component": {
+    "prefix": "npage",
+    "body": [
+      "const ${1:ComponentName} = () => {",
+      "  return (",
+      "    <div>",
+      "      $0",
+      "    </div>",
+      "  );",
+      "};",
+      "",
+      "export default ${1:ComponentName};"
+    ],
+    "description": "Next.js page component"
+  },
+  "Next.js Layout Component": {
+    "prefix": "nlayout",
+    "body": [
+      "export default function Layout({ children }: { children: React.ReactNode }) {",
+      "  return (",
+      "    <div>",
+      "      {children}",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "Next.js Layout component"
+  },
+  "Next.js API Route": {
+    "prefix": "apiroute",
+    "body": [
+      "import { NextRequest, NextResponse } from 'next/server';",
+      "",
+      "export async function GET(request: NextRequest) {",
+      "  return NextResponse.json({ message: 'Hello' });",
+      "}",
+      "",
+      "export async function POST(request: NextRequest) {",
+      "  const body = await request.json();",
+      "  return NextResponse.json({ data: body }, { status: 201 });",
+      "}"
+    ],
+    "description": "Next.js App Router API route handler"
+  },
+  "Next.js Middleware": {
+    "prefix": "middleware",
+    "body": [
+      "import { NextResponse } from 'next/server';",
+      "import type { NextRequest } from 'next/server';",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  return NextResponse.next();",
+      "}",
+      "",
+      "export const config = {",
+      "  matcher: ['$1'],",
+      "};"
+    ],
+    "description": "Next.js Middleware"
+  },
+  "Next.js Link": {
+    "prefix": "nlink",
+    "body": ["<Link href=\"$1\">$2</Link>"],
+    "description": "Next.js Link component"
+  },
+  "Next.js Image": {
+    "prefix": "nimg",
+    "body": [
+      "import Image from 'next/image';",
+      "",
+      "<Image src=\"$1\" alt=\"$2\" width={$3} height={$4} />"
+    ],
+    "description": "Next.js Image component"
+  },
+  "React Functional Component (const)": {
+    "prefix": "rfc",
+    "body": [
+      "interface ${1:ComponentName}Props {",
+      "  $2",
+      "}",
+      "",
+      "const ${1:ComponentName} = ({ $3 }: ${1:ComponentName}Props) => {",
+      "  return (",
+      "    <div>",
+      "      $0",
+      "    </div>",
+      "  );",
+      "};",
+      "",
+      "export default ${1:ComponentName};"
+    ],
+    "description": "React Functional Component with TypeScript props"
+  },
+  "React Functional Component (function)": {
+    "prefix": "rff",
+    "body": [
+      "interface ${1:ComponentName}Props {",
+      "  $2",
+      "}",
+      "",
+      "export default function ${1:ComponentName}({ $3 }: ${1:ComponentName}Props) {",
+      "  return (",
+      "    <div>",
+      "      $0",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "React Functional Component (function declaration)"
+  },
+  "ForwardRef Component": {
+    "prefix": "frc",
+    "body": [
+      "import { forwardRef } from 'react';",
+      "",
+      "interface ${1:ComponentName}Props {",
+      "  ${2:label}?: string;",
+      "}",
+      "",
+      "const ${1:ComponentName} = forwardRef<${3:HTMLDivElement}, ${1:ComponentName}Props>(({ ${2:label} }, ref) => {",
+      "  return (",
+      "    <div ref={ref}>",
+      "      {${2:label}}",
+      "    </div>",
+      "  );",
+      "});",
+      "",
+      "${1:ComponentName}.displayName = '${1:ComponentName}';",
+      "export default ${1:ComponentName};"
+    ],
+    "description": "ForwardRef component with TypeScript props"
+  },
+  "useState Hook": {
+    "prefix": "us",
+    "body": [
+      "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState<${2:type}>(${3:initialValue});"
+    ],
+    "description": "useState Hook with TypeScript"
+  },
+  "useEffect (with deps)": {
+    "prefix": "ue",
+    "body": [
+      "useEffect(() => {",
+      "  $0",
+      "}, [${1:deps}]);"
+    ],
+    "description": "useEffect Hook"
+  },
+  "useEffect (mount only)": {
+    "prefix": "uem",
+    "body": [
+      "useEffect(() => {",
+      "  $0",
+      "}, []);"
+    ],
+    "description": "useEffect Hook runs once at mount"
+  },
+  "useEffect (every render)": {
+    "prefix": "uer",
+    "body": [
+      "useEffect(() => {",
+      "  $0",
+      "});"
+    ],
+    "description": "useEffect Hook runs on every render"
+  },
+  "useEffect Cleanup": {
+    "prefix": "cleanup",
+    "body": [
+      "return () => {",
+      "  $0",
+      "};"
+    ],
+    "description": "useEffect cleanup function"
+  },
+  "useRef": {
+    "prefix": "urf",
+    "body": ["const ${1:ref} = useRef<${2:HTMLDivElement}>(${3:null});"],
+    "description": "useRef Hook with TypeScript"
+  },
+  "useContext": {
+    "prefix": "uctx",
+    "body": ["const ${1:value} = useContext(${2:Context});"],
+    "description": "useContext Hook"
+  },
+  "useMemo": {
+    "prefix": "ume",
+    "body": [
+      "const ${1:value} = useMemo(() => {",
+      "  $0",
+      "}, [${2:deps}]);"
+    ],
+    "description": "useMemo Hook"
+  },
+  "useCallback": {
+    "prefix": "ucb",
+    "body": [
+      "const ${1:fn} = useCallback(() => {",
+      "  $0",
+      "}, [${2:deps}]);"
+    ],
+    "description": "useCallback Hook"
+  },
+  "useReducer": {
+    "prefix": "ur",
+    "body": [
+      "const [state, dispatch] = useReducer(${1:reducer}, ${2:initialState});"
+    ],
+    "description": "useReducer Hook"
+  },
+  "Custom Hook": {
+    "prefix": "hk",
+    "body": [
+      "import { useState } from 'react';",
+      "",
+      "function use${1:Custom}(initialValue: ${2:type}) {",
+      "  const [state, setState] = useState<${2:type}>(initialValue);",
+      "",
+      "  const update = (value: ${2:type}) => {",
+      "    setState(value);",
+      "  };",
+      "",
+      "  return { state, update };",
+      "}",
+      "",
+      "export default use${1:Custom};"
+    ],
+    "description": "Custom hook boilerplate"
+  },
+  "React Context": {
+    "prefix": "rctx",
+    "body": [
+      "import { createContext, useState, useMemo, useContext, type ReactNode } from 'react';",
+      "",
+      "interface ${1:Name}Value {",
+      "  ${2:state}: ${3:string};",
+      "  set${2/(.*)/${1:/capitalize}/}: (value: ${3:string}) => void;",
+      "}",
+      "",
+      "const ${1:Name}Context = createContext<${1:Name}Value | null>(null);",
+      "",
+      "export function ${1:Name}Provider({ children }: { children: ReactNode }) {",
+      "  const [${2:state}, set${2/(.*)/${1:/capitalize}/}] = useState<${3:string}>(${4:''});",
+      "  const value = useMemo(() => ({ ${2:state}, set${2/(.*)/${1:/capitalize}/} }), [${2:state}]);",
+      "  return (",
+      "    <${1:Name}Context.Provider value={value}>",
+      "      {children}",
+      "    </${1:Name}Context.Provider>",
+      "  );",
+      "}",
+      "",
+      "export function use${1:Name}() {",
+      "  const ctx = useContext(${1:Name}Context);",
+      "  if (!ctx) throw new Error('use${1:Name} must be used within ${1:Name}Provider');",
+      "  return ctx;",
+      "}"
+    ],
+    "description": "React Context with Provider and custom hook"
+  },
+  "React Fragment": {
+    "prefix": "frag",
+    "body": ["<>", "  $0", "</>"],
+    "description": "React Fragment shorthand"
+  },
+  "Next.js Error Boundary": {
+    "prefix": "nerror",
+    "body": [
+      "'use client';",
+      "",
+      "// Error boundaries must be Client Components",
+      "import { useEffect } from 'react';",
+      "",
+      "export default function ErrorPage({",
+      "  error,",
+      "  unstable_retry,",
+      "}: {",
+      "  error: Error & { digest?: string };",
+      "  unstable_retry: () => void;",
+      "}) {",
+      "  useEffect(() => {",
+      "    // Log the error to an error reporting service",
+      "    console.error(error);",
+      "  }, [error]);",
+      "",
+      "  return (",
+      "    <div>",
+      "      <h2>Something went wrong!</h2>",
+      "      <button",
+      "        onClick={",
+      "          // Attempt to recover by re-fetching and re-rendering the segment",
+      "          () => unstable_retry()",
+      "        }",
+      "      >",
+      "        Try again",
+      "      </button>",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "Next.js error boundary client component"
+  },
+  "Console Log": {
+    "prefix": "clg",
+    "body": ["console.log($1);"],
+    "description": "console.log"
+  }
+}
