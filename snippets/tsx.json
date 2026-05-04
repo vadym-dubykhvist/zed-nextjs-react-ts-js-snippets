@@ -212,21 +212,17 @@
   "Custom Hook": {
     "prefix": "hk",
     "body": [
-      "import { useState } from 'react';",
+      "import { useState, useCallback } from 'react';",
       "",
-      "function use${1:Custom}(initialValue: ${2:type}) {",
-      "  const [state, setState] = useState<${2:type}>(initialValue);",
+      "export function use${1:Name}<T = ${2:unknown}>(initial: T) {",
+      "  const [value, setValue] = useState<T>(initial);",
       "",
-      "  const update = (value: ${2:type}) => {",
-      "    setState(value);",
-      "  };",
+      "  const reset = useCallback(() => setValue(initial), [initial]);",
       "",
-      "  return { state, update };",
-      "}",
-      "",
-      "export default use${1:Custom};"
+      "  return { value, setValue, reset } as const;",
+      "}"
     ],
-    "description": "Custom hook boilerplate"
+    "description": "Custom hook with generic type, reset, and const return"
   },
   "React Context": {
     "prefix": "rctx",
