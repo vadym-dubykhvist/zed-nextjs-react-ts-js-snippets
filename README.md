@@ -16,12 +16,12 @@ Zed uses `javascript.json` for JSX snippets, so the local `jsx.json` snippet fil
 
 | Command | Snippet | Description |
 | --- | --- | --- |
-| `npage` | Next.js Page Component | Next.js page component |
-| `nlayout` | Next.js Layout Component | Next.js Layout component |
-| `apiroute` | Next.js API Route | Next.js API route handler |
+| `npage` | Next.js Page Component | Next.js App Router page component |
+| `nlayout` | Next.js Layout Component | Next.js layout component |
+| `apiroute` | Next.js API Route | Next.js App Router route handler |
 | `middleware` | Next.js Middleware | Next.js Middleware |
 | `nlink` | Next.js Link | Next.js Link component |
-| `nimg` | Next.js Image | Next.js Image component |
+| `nimg` | Next.js Image | Next.js Image component with responsive sizing |
 | `rfc` | React Functional Component | React Functional Component |
 | `rff` | React Functional Component (function) | React Functional Component (function declaration) |
 | `us` | useState Hook | React useState Hook |
@@ -34,24 +34,24 @@ Zed uses `javascript.json` for JSX snippets, so the local `jsx.json` snippet fil
 | `ume` | useMemo | useMemo Hook |
 | `ucb` | useCallback | useCallback Hook |
 | `hk` | Custom Hook | Custom hook boilerplate |
-| `rctx` | React Context | React Context with Provider and custom hook |
+| `rctx` | React Context | Simple React Context provider and hook |
 | `frag` | React Fragment | React Fragment shorthand |
-| `apifetch` | Async fetch | Async/await fetch API call |
+| `apifetch` | Async fetch | Async fetch request with status handling |
 | `clg` | Console Log | console.log |
 
 ### TSX
 
 | Command | Snippet | Description |
 | --- | --- | --- |
-| `npage` | Next.js Page Component | Next.js page component |
-| `nlayout` | Next.js Layout Component | Next.js Layout component |
+| `npage` | Next.js Page Component | Next.js App Router page component |
+| `nlayout` | Next.js Layout Component | Typed Next.js layout component |
 | `apiroute` | Next.js API Route | Next.js App Router API route handler |
 | `middleware` | Next.js Middleware | Next.js Middleware |
 | `nlink` | Next.js Link | Next.js Link component |
-| `nimg` | Next.js Image | Next.js Image component |
+| `nimg` | Next.js Image | Next.js Image component with responsive sizing |
 | `rfc` | React Functional Component (const) | React Functional Component with TypeScript props |
 | `rff` | React Functional Component (function) | React Functional Component (function declaration) |
-| `frc` | ForwardRef Component | ForwardRef component with TypeScript props |
+| `frc` | ForwardRef Component | ForwardRef component with native element props |
 | `us` | useState Hook | useState Hook with TypeScript |
 | `ue` | useEffect (with deps) | useEffect Hook |
 | `uem` | useEffect (mount only) | useEffect Hook runs once at mount |
@@ -63,7 +63,7 @@ Zed uses `javascript.json` for JSX snippets, so the local `jsx.json` snippet fil
 | `ucb` | useCallback | useCallback Hook |
 | `ur` | useReducer | useReducer Hook |
 | `hk` | Custom Hook | Custom hook boilerplate |
-| `rctx` | React Context | React Context with Provider and custom hook |
+| `rctx` | React Context | Simple typed React Context provider and hook |
 | `frag` | React Fragment | React Fragment shorthand |
 | `nerror` | Next.js Error Boundary | Next.js error boundary client component |
 | `clg` | Console Log | console.log |
@@ -77,12 +77,12 @@ Zed uses `javascript.json` for JSX snippets, so the local `jsx.json` snippet fil
 | `enum` | Enum | Enum |
 | `tsfn` | Function Declaration | Function declaration with types |
 | `tsafn` | Arrow Function | Arrow function with types |
-| `tsfetch` | Typed Fetch Function | Typed fetch function with error handling |
-| `tstc` | Try/Catch | try/catch with typed error |
-| `tgf` | Type Guard | Type guard function |
+| `tsfetch` | Typed Fetch Function | Typed fetch helper with request options |
+| `tstc` | Try/Catch | try/catch that preserves unknown error cause |
+| `tgf` | Type Guard | Object type guard by property presence |
 | `tsrcd` | Record Type | Record utility type |
 | `tscls` | Class with Constructor | Class with constructor |
-| `tsserv` | Service Class | Service class boilerplate |
+| `tsserv` | Service Class | Service class with typed dependencies |
 | `tsimprt` | Import Statement | Named import |
 | `tsxprt` | Export Statement | Export members |
 | `clg` | Console Log | console.log |

@@ -27,35 +27,52 @@
   "Typed Fetch Function": {
     "prefix": "tsfetch",
     "body": [
-      "export async function fetch${1:Data}(): Promise<${2:Type}> {",
-      "  const response = await fetch('${3:/api/endpoint}');",
-      "  if (!response.ok) throw new Error('Failed to fetch');",
-      "  return response.json();",
+      "type ${1:ResponseData}RequestOptions = RequestInit & {",
+      "  signal?: AbortSignal;",
+      "};",
+      "",
+      "export async function get${1:ResponseData}(",
+      "  url: string,",
+      "  options: ${1:ResponseData}RequestOptions = {},",
+      "): Promise<${1:ResponseData}> {",
+      "  const response = await fetch(url, options);",
+      "",
+      "  if (!response.ok) {",
+      "    throw new Error('GET ' + response.url + ' failed with ' + response.status);",
+      "  }",
+      "",
+      "  return (await response.json()) as ${1:ResponseData};",
       "}"
     ],
-    "description": "Typed fetch function with error handling"
+    "description": "Typed fetch helper with request options"
   },
   "Try/Catch": {
     "prefix": "tstc",
     "body": [
       "try {",
       "  $0",
-      "} catch (err: unknown) {",
-      "  if (err instanceof Error) {",
-      "    console.error(err.message);",
-      "  }",
+      "} catch (error) {",
+      "  const message = error instanceof Error ? error.message : 'Unknown error';",
+      "",
+      "  throw new Error('${1:Operation} failed: ' + message, {",
+      "    cause: error,",
+      "  });",
       "}"
     ],
-    "description": "try/catch with typed error"
+    "description": "try/catch that preserves unknown error cause"
   },
   "Type Guard": {
     "prefix": "tgf",
     "body": [
-      "function is${1:Type}(value: unknown): value is ${1:Type} {",
-      "  return typeof value === '${2:string}';",
+      "function is${1:TypeName}(value: unknown): value is ${1:TypeName} {",
+      "  if (typeof value !== 'object' || value === null) {",
+      "    return false;",
+      "  }",
+      "",
+      "  return '${2:property}' in value;",
       "}"
     ],
-    "description": "Type guard function"
+    "description": "Object type guard by property presence"
   },
   "Record Type": {
     "prefix": "tsrcd",
@@ -80,19 +97,21 @@
   "Service Class": {
     "prefix": "tsserv",
     "body": [
-      "class ${1:Name}Service {",
-      "  constructor(private readonly ${2:dep}: ${3:Dependency}) {}",
+      "interface ${1:ServiceName}Dependencies {",
+      "  ${2:client}: ${3:Client};",
+      "}",
       "",
-      "  async execute(${4:input}: ${5:InputType}): Promise<${6:OutputType}> {",
-      "    try {",
-      "      $0",
-      "    } catch (err) {",
-      "      throw new Error('Service execution failed');",
-      "    }",
+      "export class ${1:ServiceName}Service {",
+      "  constructor(private readonly deps: ${1:ServiceName}Dependencies) {}",
+      "",
+      "  async run(${4:input}: ${5:Input}): Promise<${6:Result}> {",
+      "    const { ${2:client} } = this.deps;",
+      "    $0",
+      "    return ${7:result};",
       "  }",
       "}"
     ],
-    "description": "Service class boilerplate"
+    "description": "Service class with typed dependencies"
   },
   "Import Statement": {
     "prefix": "tsimprt",
