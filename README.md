@@ -108,6 +108,14 @@ To publish publicly:
 5. Add an `extensions.toml` entry with version `0.0.1`.
 6. Run `pnpm sort-extensions` in the `zed-industries/extensions` repo.
 
+## Attribution
+
+This extension contains snippets created, reviewed, and curated by Vadym Dubykhvist with AI assistance.
+
+The snippets are based on common React, Next.js, TypeScript, TSX, and JSX development patterns. Some command names overlap with existing snippet collections because they are conventional abbreviations in the React and TypeScript ecosystem.
+
+No source extension is intentionally copied wholesale. If any snippet is found to be too close to an existing licensed snippet, please open an issue and it will be rewritten or attributed appropriately.
+
 ## License
 
 MIT
